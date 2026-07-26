@@ -319,10 +319,12 @@ footer {
   justify-content: center;
 }
 
+/* Bildene er 2x, så de vises på halv pikselbredde og blir skarpe på
+   skjermer med høy pikseltetthet. */
 .carousel-frame img {
   display: block;
   max-width: 100%;
-  max-height: 340px;
+  max-height: 380px;
   width: auto;
   height: auto;
 }
