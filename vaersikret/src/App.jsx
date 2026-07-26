@@ -37,7 +37,7 @@ function FlowSection() {
   const slides = [
     { src: "/screenshots/flow1.png", caption: t("vs_flow1_cap") },
     { src: "/screenshots/flow2.png", caption: t("vs_flow2_cap") },
-    { src: "/screenshots/screen2.png", caption: t("vs_flow3_cap") },
+    { src: "/screenshots/screen3.png", caption: t("vs_flow3_cap") },
   ].filter((s) => !failed[s.src]);
 
   // Holder prikkene i takt med hvor brukeren har sveipet

@@ -1,20 +1,18 @@
-Skjermbilder som brukes på siden:
+Bilder som brukes på siden:
 
-  screen2.png   enkeltskjerm, vises i toppen og som siste bilde i karusellen
-  flow1.png     bred gjennomgang: velkomst -> kart -> søk -> valgt adresse
-  flow2.png     bred gjennomgang: vinddata -> tiltaksliste -> filter -> detalj
+  screen2.png   ekte skjermbilde: kart med valgt punkt, vises i toppen
+  screen3.png   vindsiden, siste bilde i karusellen
+  flow1.png     gjennomgang: velkomst -> kart -> adressesøk -> valgt punkt
+  flow2.png     gjennomgang: vinddata -> tiltaksliste -> valgt tiltak -> detaljer
 
-Enkeltskjermene er telefonmockups med gjennomsiktig bakgrunn. Siden legger på
-skygge selv, så ikke bak inn ramme eller hvit bakgrunn i selve bildet.
+Kart-, søke- og adresseskjermene er ekte opptak fra emulator i 1080x2400.
+Velkomstdialogen, vindsiden og tiltakssidene er tegnet på nytt i samme
+oppløsning, fordi Frost-nøklene er utgått og de skjermene ikke lastes i appen.
+Tekst og farger er hentet fra appens egne ressurser (strings.xml,
+measures.json). Skriptene ligger ikke i repoet — de var engangsverktøy.
 
-Flytbildene vises på lyst kort, fordi pilene i dem er svarte.
+Vil du ha ekte opptak av alle skjermene: fornye nøklene på frost.met.no, bygg
+APK i Android Studio, og fang skjermene på nytt i 1080x2400.
 
-Karusellen hopper over bilder som mangler. Vil du ha flere skjermer inn, legg
-dem til i listen i FlowSection i src/App.jsx.
-
-screen1.png er ikke i bruk: kartet er kuttet og bunnpanelet er bredere enn
-telefonen, så bildet ser feil ut. Byttes det ut med en ren eksport, kan det
-legges inn igjen.
-
-Flytbildene er 634x296 og 760x342. Det er i minste laget for skjermer med høy
-pikseltetthet — eksporter gjerne i dobbel størrelse hvis originalene finnes.
+Bildene er telefonmockups med gjennomsiktig bakgrunn. Karusellen legger dem på
+lyst kort fordi pilene er svarte.
