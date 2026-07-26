@@ -39,7 +39,7 @@ export const translations = {
     cv_experience: "Erfaring",
     cv_exp1_title: "Privat lærer", 
     cv_exp1_place: "Realfagshjelpen AS", 
-    cv_exp1_period: "feb. 2025 - mai 2025",
+    cv_exp1_period: "feb. 2025 - mai 2026",
 
     cv_volunteer: "Frivillig",
     cv_volu1_title: "Arrangementsjef", 
@@ -84,7 +84,7 @@ export const translations = {
     cv_experience: "Experience",
     cv_exp1_title: "Private tutor", 
     cv_exp1_place: "Realfagshjelpen AS", 
-    cv_exp1_period: "feb. 2025 - may 2025",
+    cv_exp1_period: "feb. 2025 - may 2026",
 
     cv_volunteer: "Volunteer",
     cv_volu1_title: "Events manager", 
