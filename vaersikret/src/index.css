@@ -122,23 +122,59 @@ section {
 
 footer {
   border-top: 1px solid var(--vs-line);
-  padding: 50px 0 0;
-  margin-top: 60px;
+  background: rgba(0, 0, 0, 0.18);
+  margin-top: 0;
 }
 
 .footer-inner {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
+  padding: 44px 0 34px;
+  text-align: center;
 }
 
-.footer-credit {
-  margin-top: 22px;
-  padding-bottom: 40px;
+.footer-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.pill-link.footer-pill {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--vs-ink);
+}
+
+.pill-link.footer-pill:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--vs-accent);
+}
+
+.icon-btn {
+  padding: 6px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
   color: var(--vs-muted);
   font-size: 0.85rem;
+  text-align: center;
+}
+
+.footer-heart {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #ff5d73;
 }
 
 .marquee {
@@ -204,38 +240,31 @@ footer {
   flex-wrap: wrap;
 }
 
-.phones {
+/* Skjermbildene er telefonmockups med gjennomsiktig bakgrunn, så de skal
+   ikke ha noen ramme rundt seg — bare skygge som følger silhuetten. */
+.shots {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   justify-content: center;
+  align-items: flex-start;
 }
 
-.phone {
-  width: 200px;
-  aspect-ratio: 9 / 19;
-  border-radius: 28px;
-  border: 3px solid #2e4a66;
-  background: #0a1622;
-  overflow: hidden;
-  position: relative;
+.shot {
+  width: 215px;
   flex-shrink: 0;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
 }
 
-.phone:nth-child(2) {
-  transform: translateY(28px);
-}
-
-.phone img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.shot img {
   display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
 }
 
-.phone .placeholder {
-  position: absolute;
-  inset: 0;
+.shot .placeholder {
+  aspect-ratio: 9 / 19;
+  border: 1px solid var(--vs-line);
+  border-radius: 26px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -250,8 +279,120 @@ footer {
     radial-gradient(circle at 75% 80%, rgba(129, 199, 132, 0.14), transparent 55%);
 }
 
-.phone .placeholder .icon {
+.shot .placeholder .icon {
   font-size: 2rem;
+}
+
+/* Gjennomgang: sveipbar karusell med brede flytbilder.
+   Bildene har svarte piler, så de trenger lys bakgrunn for å synes. */
+.carousel {
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  margin: 0;
+  padding: 0 2px;
+}
+
+.carousel-frame {
+  background: #f4f8fb;
+  border: 1px solid var(--vs-line);
+  border-radius: 14px;
+  min-height: 300px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-frame img {
+  display: block;
+  max-width: 100%;
+  max-height: 340px;
+  width: auto;
+  height: auto;
+}
+
+.carousel-slide figcaption {
+  margin-top: 14px;
+  color: var(--vs-muted);
+  font-size: 0.9rem;
+  text-align: center;
+  min-height: 3em;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 150px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--vs-line);
+  background: var(--vs-card);
+  color: var(--vs-ink);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.carousel-arrow:hover:not(:disabled) {
+  border-color: var(--vs-accent);
+  background: var(--vs-bg2);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.carousel-arrow.prev {
+  left: -14px;
+}
+
+.carousel-arrow.next {
+  right: -14px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.carousel-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background: var(--vs-line);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.carousel-dots button.active {
+  background: var(--vs-accent);
+  transform: scale(1.35);
 }
 
 .features {
@@ -313,12 +454,20 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .phones {
+  .shots {
     margin-top: 10px;
   }
 
-  .phone {
-    width: 150px;
+  .shot {
+    width: 175px;
+  }
+
+  .carousel-arrow.prev {
+    left: 2px;
+  }
+
+  .carousel-arrow.next {
+    right: 2px;
   }
 
   .features,

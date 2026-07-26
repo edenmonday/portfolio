@@ -8,6 +8,7 @@ export const translations = {
     lang_en: "English",
     to_top: "Til toppen ↑",
     made_by: "Laget av Eden",
+    copy_email: "Kopier e-postadresse",
 
     // Forside
     hero_hello: "Hei!",
@@ -23,7 +24,7 @@ export const translations = {
     p_vs_tag: "Android-app for klimatilpasning",
     p_vs_period: "feb. 2026 - mai 2026",
     p_vs_desc:
-      "Gruppeprosjekt i IN2000 ved UiO. App som viser historisk vind- og regndata for en valgt eiendom og anbefaler klimatiltak. Kotlin, Jetpack Compose, MVVM.",
+      "Gruppeprosjekt i IN2000 ved UiO. Android-app som henter observasjonshistorikken for en valgt eiendom fra Meteorologisk institutts Frost API, regner ut hvor uvanlig vinden og nedbøren er akkurat der, og foreslår konkrete klimatiltak. Kotlin, Jetpack Compose, MVVM.",
 
     // CV seksjon
     cv_title: "CV",
@@ -55,6 +56,7 @@ export const translations = {
     lang_en: "English",
     to_top: "To the top ↑",
     made_by: "Made by Eden",
+    copy_email: "Copy email address",
 
     hero_hello: "Hello!",
     hero_intro_pre: "I am a ",
@@ -68,7 +70,7 @@ export const translations = {
     p_vs_tag: "Android app for climate adaptation",
     p_vs_period: "feb. 2026 - may 2026",
     p_vs_desc:
-      "Group project in subject IN2000 Software Engineering at UiO. App showing historical wind and rain data for a selected property, recommending climate adaptation measures. Kotlin, Jetpack Compose, MVVM.",
+      "Group project in IN2000 Software Engineering at UiO. Android app that pulls the observation history for a chosen property from the Norwegian Meteorological Institute's Frost API, works out how unusual the wind and rainfall are at that exact spot, and suggests concrete climate adaptation measures. Kotlin, Jetpack Compose, MVVM.",
 
     cv_title: "CV",
     cv_education: "Education",

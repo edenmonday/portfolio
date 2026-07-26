@@ -320,28 +320,24 @@ section {
 footer {
   background: var(--accent);
   color: #fff;
-  margin-top: 80px;
+  margin-top: 0;
 }
 
 .footer-inner {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 28px;
-  padding: 50px 0 40px;
-}
-
-.footer-controls {
-  display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  gap: 14px;
+  padding: 44px 0 34px;
+  text-align: center;
 }
 
 .footer-row {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-inner .langswitch button {
@@ -357,14 +353,15 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
+  margin-top: 6px;
   color: rgba(255, 255, 255, 0.85);
   font-size: 0.85rem;
   text-align: center;
 }
 
 .footer-heart {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   line-height: 1;
 }
 
