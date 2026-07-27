@@ -34,8 +34,6 @@ export const translations = {
       "Fra velkomstskjerm til valgt adresse: søk eller trykk i kartet, og velg hva du vil se på eiendommen.",
     vs_flow2_cap:
       "Fra historisk vinddata til et konkret tiltak: filtrer på det som er relevant, og gå i dybden på ett av dem.",
-    vs_flow3_cap:
-      "Vindsiden: grenseverdier regnet ut fra stedets egen historikk, høyeste vindkast og sterkeste middelvind.",
     vs_tech_title: "Teknologi",
     vs_tech_desc:
       "Kotlin og Jetpack Compose med Material 3. MVVM med ViewModel og StateFlow, Ktor Client og kotlinx.serialization mot API-ene, Navigation Compose mellom skjermene og Vico til grafene. Enhetstester i JUnit og Robolectric, UI-tester i Espresso.",
@@ -79,8 +77,6 @@ export const translations = {
       "From the welcome screen to a chosen address: search or tap the map, then pick what you want to see for the property.",
     vs_flow2_cap:
       "From historical wind data to a specific measure: filter for what matters, then dig into one of them.",
-    vs_flow3_cap:
-      "The wind page: thresholds derived from the location's own record, highest gust and strongest mean wind.",
     vs_tech_title: "Technology",
     vs_tech_desc:
       "Kotlin and Jetpack Compose with Material 3. MVVM with ViewModel and StateFlow, Ktor Client and kotlinx.serialization against the APIs, Navigation Compose between screens and Vico for the charts. Unit tests in JUnit and Robolectric, UI tests in Espresso.",
