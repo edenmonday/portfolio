@@ -87,6 +87,22 @@ export default function Home() {
           <h2 className="section-title">{t("projects_title")}</h2>
 
           <div className="project">
+            <span className="project-name">{t("p_pf_title")}</span>
+            <span className="project-period">{t("p_pf_period")}</span>
+            <span className="project-tag">{t("p_pf_tag")}</span>
+            <p className="project-desc">{t("p_pf_desc")}</p>
+            <span className="project-links">
+              <a
+                href="https://github.com/edenmonday/portfolio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t("github")}
+              </a>
+            </span>
+          </div>
+
+          <div className="project">
             <span className="project-name">{t("p_vs_title")}</span>
             <span className="project-period">{t("p_vs_period")}</span>
             <span className="project-tag">{t("p_vs_tag")}</span>
@@ -97,22 +113,6 @@ export default function Home() {
               </a>
               <a
                 href="https://github.com/edenmonday/team-31"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t("github")}
-              </a>
-            </span>
-          </div>
-
-          <div className="project">
-            <span className="project-name">{t("p_pf_title")}</span>
-            <span className="project-period">{t("p_pf_period")}</span>
-            <span className="project-tag">{t("p_pf_tag")}</span>
-            <p className="project-desc">{t("p_pf_desc")}</p>
-            <span className="project-links">
-              <a
-                href="https://github.com/edenmonday/portfolio"
                 target="_blank"
                 rel="noreferrer"
               >

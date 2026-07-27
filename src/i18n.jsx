@@ -30,7 +30,7 @@ export const translations = {
     p_pf_tag: "Denne nettsiden",
     p_pf_period: "juli 2026",
     p_pf_desc:
-      "Ja, denne. Bygget fra bunnen med React og Vite, med en liten egen i18n-løsning for norsk og engelsk framfor et bibliotek. Samme repo huser også VærSikret-siden, som bygges fra en undermappe.",
+      "Bygget fra bunnen med React og Vite, med en liten egen i18n-løsning for norsk og engelsk framfor et bibliotek. Samme repo huser også VærSikret-siden, som bygges fra en undermappe.",
 
     // CV seksjon
     cv_title: "CV",
@@ -81,7 +81,7 @@ export const translations = {
     p_pf_tag: "This website",
     p_pf_period: "July 2026",
     p_pf_desc:
-      "Yes, this one. Built from scratch with React and Vite, with a small home-made i18n setup for Norwegian and English instead of a library. The same repo also holds the VærSikret site, built from a subfolder.",
+      "Built from scratch with React and Vite, with a small home-made i18n setup for Norwegian and English instead of a library. The same repo also holds the VærSikret site, built from a subfolder.",
 
     cv_title: "CV",
     cv_education: "Education",
