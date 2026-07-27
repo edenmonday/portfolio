@@ -105,6 +105,22 @@ export default function Home() {
             </span>
           </div>
 
+          <div className="project">
+            <span className="project-name">{t("p_pf_title")}</span>
+            <span className="project-period">{t("p_pf_period")}</span>
+            <span className="project-tag">{t("p_pf_tag")}</span>
+            <p className="project-desc">{t("p_pf_desc")}</p>
+            <span className="project-links">
+              <a
+                href="https://github.com/edenmonday/portfolio"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t("github")}
+              </a>
+            </span>
+          </div>
+
         </section>
 
         <section id="cv">
@@ -168,9 +184,6 @@ export default function Home() {
                 "REST APIs",
                 "HTML, CSS",
                 "Git & GitHub",
-                
-
-                // TODO: legg til mer her baka
               ].map((s) => (
                 <li key={s}>{s}</li>
               ))}

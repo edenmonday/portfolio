@@ -26,6 +26,12 @@ export const translations = {
     p_vs_desc:
       "Gruppeprosjekt i IN2000 ved UiO. Android-app som henter observasjonshistorikken for en valgt eiendom fra Meteorologisk institutts Frost API, regner ut hvor uvanlig vinden og nedbøren er akkurat der, og foreslår konkrete klimatiltak. Kotlin, Jetpack Compose, MVVM.",
 
+    p_pf_title: "edenmonday.no",
+    p_pf_tag: "Denne nettsiden",
+    p_pf_period: "juli 2026",
+    p_pf_desc:
+      "Ja, denne. Bygget fra bunnen med React og Vite, med en liten egen i18n-løsning for norsk og engelsk framfor et bibliotek. Samme repo huser også VærSikret-siden, som bygges fra en undermappe.",
+
     // CV seksjon
     cv_title: "CV",
     cv_education: "Utdanning",
@@ -70,6 +76,12 @@ export const translations = {
     p_vs_period: "feb. 2026 - may 2026",
     p_vs_desc:
       "Group project in IN2000 Software Engineering at UiO. Android app that pulls the observation history for a chosen property from the Norwegian Meteorological Institute's Frost API, works out how unusual the wind and rainfall are at that exact spot, and suggests concrete climate adaptation measures. Kotlin, Jetpack Compose, MVVM.",
+
+    p_pf_title: "edenmonday.no",
+    p_pf_tag: "This website",
+    p_pf_period: "July 2026",
+    p_pf_desc:
+      "Yes, this one. Built from scratch with React and Vite, with a small home-made i18n setup for Norwegian and English instead of a library. The same repo also holds the VærSikret site, built from a subfolder.",
 
     cv_title: "CV",
     cv_education: "Education",
