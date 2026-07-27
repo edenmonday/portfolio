@@ -6,7 +6,6 @@ export const translations = {
     lang_en: "English",
     to_top: "Til toppen ↑",
     made_by: "Laget av Eden",
-    github: "GitHub",
     copy_email: "Kopier e-postadresse",
 
     vs_back: "← eden monday",
@@ -51,7 +50,6 @@ export const translations = {
     lang_en: "English",
     to_top: "To the top ↑",
     made_by: "Made by Eden",
-    github: "GitHub",
     copy_email: "Copy email address",
 
     vs_back: "← eden monday",

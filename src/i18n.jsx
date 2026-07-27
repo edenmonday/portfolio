@@ -50,7 +50,6 @@ export const translations = {
     cv_contact: "Kontakt",
   },
   en: {
-    nav_home: "Home",
     nav_cv: "CV",
     lang_no: "Norsk",
     lang_en: "English",
