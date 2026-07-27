@@ -36,6 +36,7 @@ function FlowSection() {
 
   const slides = [
     { src: "/screenshots/flow1.png", caption: t("vs_flow1_cap") },
+    { src: "/screenshots/flow3.png", caption: t("vs_flow3_cap") },
     { src: "/screenshots/flow2.png", caption: t("vs_flow2_cap") },
   ].filter((s) => !failed[s.src]);
 

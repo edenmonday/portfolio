@@ -32,6 +32,8 @@ export const translations = {
     next: "Neste",
     vs_flow1_cap:
       "Fra velkomstskjerm til valgt adresse: søk eller trykk i kartet, og velg hva du vil se på eiendommen.",
+    vs_flow3_cap:
+      "Vindsiden i detalj: grenseverdiene regnes ut fra stedets egen historikk, med Beaufort-fordeling og årlig utvikling av middelvind og vindkast.",
     vs_flow2_cap:
       "Fra historisk vinddata til et konkret tiltak: filtrer på det som er relevant, og gå i dybden på ett av dem.",
     vs_tech_title: "Teknologi",
@@ -75,6 +77,8 @@ export const translations = {
     next: "Next",
     vs_flow1_cap:
       "From the welcome screen to a chosen address: search or tap the map, then pick what you want to see for the property.",
+    vs_flow3_cap:
+      "The wind page in detail: thresholds are computed from the location's own record, with a Beaufort distribution and the yearly development of mean wind and gusts.",
     vs_flow2_cap:
       "From historical wind data to a specific measure: filter for what matters, then dig into one of them.",
     vs_tech_title: "Technology",
