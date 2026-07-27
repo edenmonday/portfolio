@@ -3,7 +3,7 @@ Bilder som brukes på siden:
   screen2.png   ekte skjermbilde: kart med valgt punkt, vises i toppen
   screen3.png   vindsiden, siste bilde i karusellen
   flow1.png     gjennomgang: velkomst -> kart -> adressesøk -> valgt punkt
-  flow2.png     gjennomgang: vinddata -> tiltaksliste -> valgt tiltak -> detaljer
+  flow2.png     gjennomgang: vinddata -> tiltaksliste -> tiltaksdetaljer
 
 Kart-, søke- og adresseskjermene er ekte opptak fra emulator i 1080x2400.
 Velkomstdialogen, vindsiden og tiltakssidene er tegnet på nytt i samme
