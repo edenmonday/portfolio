@@ -1,6 +1,6 @@
 Bilder som brukes på siden:
 
-  screen2.png   ekte skjermbilde: kart med valgt punkt, vises i toppen
+  screen2.png   velkomstskjermen med app-logoen, vises i toppen
   screen3.png   vindsiden, siste bilde i karusellen
   flow1.png     gjennomgang: velkomst -> kart -> adressesøk -> valgt punkt
   flow2.png     gjennomgang: vinddata -> tiltaksliste -> tiltaksdetaljer
