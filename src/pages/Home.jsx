@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLang } from "../i18n.jsx";
-import { LangSwitch, Footer } from "../components/Shared.jsx";
+import { LangSwitch, Footer, SectionHead } from "../components/Shared.jsx";
+import Life from "../components/Life.jsx";
 
 const BIRTH_DATE = new Date("2005-04-10T14:44:00");
 const EMAIL = "eden.mo@icloud.com";
@@ -18,6 +19,19 @@ const SKILLS = [
   "REST APIs",
   "Git & GitHub",
 ];
+
+// start/end: [år, måned 1-12]. end: null = pågår. years: vis bare årstall.
+const CV = {
+  exp: [
+    { id: "cafe", start: [2026, 10], end: null },
+    { id: "tutor", start: [2025, 2], end: null },
+  ],
+  vol: [{ id: "volu1", start: [2025, 8], end: [2025, 10] }],
+  edu: [
+    { id: "edu1", start: [2024, 8], end: [2027, 6], years: true, ongoing: true },
+    { id: "edu2", start: [2021, 8], end: [2024, 6], years: true },
+  ],
+};
 
 function LiveAge() {
   const [age, setAge] = useState(calcAge);
@@ -59,18 +73,6 @@ function HeroOrbs() {
   );
 }
 
-// start/end: [år, måned 1-12]. end: null = pågår. years: vis bare årstall.
-const CV = [
-  { id: "cafe", type: "exp", start: [2026, 10], end: null },
-  { id: "volu1", type: "vol", start: [2025, 8], end: [2025, 10] },
-  { id: "tutor", type: "exp", start: [2025, 2], end: null },
-  { id: "edu1", type: "edu", start: [2024, 8], end: [2027, 6], years: true, ongoing: true },
-  { id: "edu2", type: "edu", start: [2021, 8], end: [2024, 6], years: true },
-];
-
-const TYPE_LABEL = { exp: "cv_experience", vol: "cv_volunteer", edu: "cv_education" };
-const FILTERS = ["all", "exp", "edu", "vol"];
-
 function formatPeriod(item, t) {
   const m = t("months");
   const fmt = ([y, mo]) => (item.years ? `${y}` : `${m[mo - 1]} ${y}`);
@@ -87,87 +89,34 @@ function formatDuration(item, t) {
   return [y && t("cv_years")(y), mo && t("cv_months")(mo)].filter(Boolean).join(" ");
 }
 
-function useReveal() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !("IntersectionObserver" in window)) {
-      el?.classList.add("in");
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("in");
-            io.unobserve(e.target);
-          }
-        }),
-      { threshold: 0.15 }
-    );
-    el.querySelectorAll(".tl-item").forEach((n) => io.observe(n));
-    return () => io.disconnect();
-  });
-  return ref;
-}
-
-function CvTimeline() {
+function CvGroup({ type, items }) {
   const { t } = useLang();
-  const [filter, setFilter] = useState("all");
-  const ref = useReveal();
-  const items = CV.filter((i) => filter === "all" || i.type === filter);
-
+  const label = { exp: "cv_experience", vol: "cv_volunteer", edu: "cv_education" }[type];
   return (
-    <>
-      <div className="cv-filters" role="tablist">
-        {FILTERS.map((f) => (
-          <button
-            key={f}
-            role="tab"
-            aria-selected={filter === f}
-            className={filter === f ? "active" : ""}
-            onClick={() => setFilter(f)}
-          >
-            {t(f === "all" ? "cv_all" : TYPE_LABEL[f])}
-            <span className="count">
-              {f === "all" ? CV.length : CV.filter((i) => i.type === f).length}
-            </span>
-          </button>
-        ))}
-      </div>
-
-      <ol className="timeline" ref={ref}>
-        {items.map((item, i) => {
+    <div className="cv-group">
+      <h3 className="cv-group-title">{t(label)}</h3>
+      <ul className="cv-list">
+        {items.map((item) => {
           const current = !item.end || item.ongoing;
           const duration = formatDuration(item, t);
           return (
-            <li
-              key={item.id}
-              className={`tl-item type-${item.type}${current ? " current" : ""}`}
-              style={{ "--delay": `${i * 70}ms` }}
-            >
-              <span className="tl-dot" aria-hidden="true" />
-              <div className="tl-card">
-                <div className="tl-top">
-                  <span className="tl-type">{t(TYPE_LABEL[item.type])}</span>
-                  {current && (
-                    <span className="tl-now">
-                      {t(item.ongoing ? "cv_ongoing" : "cv_now")}
-                    </span>
-                  )}
-                </div>
-                <strong className="tl-title">{t(`cv_${item.id}_title`)}</strong>
-                <span className="tl-place">{t(`cv_${item.id}_place`)}</span>
-                <span className="tl-period">
-                  {formatPeriod(item, t)}
-                  {duration && <span className="tl-duration"> · {duration}</span>}
+            <li key={item.id} className={`cv-row${current ? " current" : ""}`}>
+              <span className="cv-when">{formatPeriod(item, t)}</span>
+              <div className="cv-what">
+                <strong>
+                  {t(`cv_${item.id}_title`)}
+                  {current && <span className="cv-dot" aria-label={t("cv_now")} />}
+                </strong>
+                <span>
+                  {t(`cv_${item.id}_place`)}
+                  {duration && <em> · {duration}</em>}
                 </span>
               </div>
             </li>
           );
         })}
-      </ol>
-    </>
+      </ul>
+    </div>
   );
 }
 
@@ -183,6 +132,7 @@ export default function Home() {
           </a>
           <nav className="topnav">
             <a href="#about">{t("nav_about")}</a>
+            <a href="#life">{t("nav_life")}</a>
             <a href="#projects">{t("nav_projects")}</a>
             <a href="#cv">{t("nav_cv")}</a>
             <a href="#contact">{t("nav_contact")}</a>
@@ -197,7 +147,7 @@ export default function Home() {
             <h1>
               {t("hero_hello")}
               <span className="nowrap">
-                <span className="hero-name">Eden</span>!{" "}
+                <em className="hero-name">Eden</em>!{" "}
                 <span className="heart" aria-hidden="true">
                   ♥
                 </span>
@@ -232,30 +182,37 @@ export default function Home() {
         </div>
 
         <section id="about">
-          <h2 className="section-title">{t("about_title")}</h2>
+          <SectionHead num="01" title={t("about_title")} />
           <div className="about">
             <div className="about-text">
-              <p>{t("about_p1")}</p>
+              <p className="lead">{t("about_p1")}</p>
               <p>{t("about_p2")}</p>
             </div>
-            <div className="about-focus">
+            <aside className="about-focus">
               <h3>{t("about_focus")}</h3>
-              <ul className="chips accent">
-                {t("focus").map((f) => (
-                  <li key={f}>{f}</li>
+              <ul className="focus-list">
+                {t("focus").map((f, i) => (
+                  <li key={f}>
+                    <span>{String(i + 1).padStart(2, "0")}</span>
+                    {f}
+                  </li>
                 ))}
               </ul>
-            </div>
+            </aside>
           </div>
         </section>
 
-        <section id="projects">
-          <h2 className="section-title">{t("projects_title")}</h2>
+        <Life />
 
-          <div className="project">
-            <span className="project-name">{t("p_pf_title")}</span>
-            <span className="project-period">{t("p_pf_period")}</span>
-            <span className="project-tag">{t("p_pf_tag")}</span>
+        <section id="projects">
+          <SectionHead num="03" title={t("projects_title")} />
+
+          <article className="project">
+            <div className="project-head">
+              <h3 className="project-name">{t("p_pf_title")}</h3>
+              <span className="project-period">{t("p_pf_period")}</span>
+            </div>
+            <p className="project-tag">{t("p_pf_tag")}</p>
             <p className="project-desc">{t("p_pf_desc")}</p>
             <span className="project-links">
               <a
@@ -263,43 +220,55 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                {t("github")}
+                {t("github")} ↗
               </a>
             </span>
-          </div>
+          </article>
 
-          <div className="project">
-            <span className="project-name">{t("p_vs_title")}</span>
-            <span className="project-period">{t("p_vs_period")}</span>
-            <span className="project-tag">{t("p_vs_tag")}</span>
+          <article className="project">
+            <div className="project-head">
+              <h3 className="project-name">{t("p_vs_title")}</h3>
+              <span className="project-period">{t("p_vs_period")}</span>
+            </div>
+            <p className="project-tag">{t("p_vs_tag")}</p>
             <p className="project-desc">{t("p_vs_desc")}</p>
             <span className="project-links">
-              <a href="https://vaersikret.edenmonday.no">
-                {t("view_project")} →
-              </a>
+              <a href="https://vaersikret.edenmonday.no">{t("view_project")} →</a>
               <a
                 href="https://github.com/edenmonday/team-31"
                 target="_blank"
                 rel="noreferrer"
               >
-                {t("github")}
+                {t("github")} ↗
               </a>
             </span>
-          </div>
+          </article>
         </section>
 
         <section id="cv">
-          <h2 className="section-title">{t("cv_title")}</h2>
+          <SectionHead num="04" title={t("cv_title")} />
 
-          <CvTimeline />
+          <div className="cv-now">
+            <span className="cv-now-label">{t("cv_right_now")}</span>
+            <p>{t("cv_right_now_text")}</p>
+          </div>
 
-          <div className="cv-block skills-block">
-            <h3>{t("cv_skills")}</h3>
-            <ul className="chips">
-              {SKILLS.map((s) => (
-                <li key={s}>{s}</li>
-              ))}
-            </ul>
+          <div className="cv-grid">
+            <div>
+              <CvGroup type="exp" items={CV.exp} />
+              <CvGroup type="vol" items={CV.vol} />
+            </div>
+            <div>
+              <CvGroup type="edu" items={CV.edu} />
+              <div className="cv-group">
+                <h3 className="cv-group-title">{t("cv_skills")}</h3>
+                <ul className="chips">
+                  {SKILLS.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
 
