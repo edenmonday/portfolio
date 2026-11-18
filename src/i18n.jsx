@@ -1,9 +1,12 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 export const translations = {
   no: {
-    // Navg / felles
+    // Nav / felles
+    nav_about: "Om meg",
+    nav_projects: "Prosjekter",
     nav_cv: "CV",
+    nav_contact: "Kontakt",
     lang_no: "Norsk",
     lang_en: "English",
     to_top: "Til toppen ↑",
@@ -11,10 +14,29 @@ export const translations = {
     copy_email: "Kopier e-postadresse",
 
     // Forside
-    hero_hello: "Hei!",
+    hero_eyebrow: "Informatikk × markedsføring",
+    hero_hello: "Hei, jeg er Eden.",
     hero_intro_pre: "Jeg er en ",
     hero_intro_post:
-      " år gammel utvikler og informatikkstudent ved Universitetet i Oslo.",
+      " år gammel informatikkstudent ved Universitetet i Oslo, med hjertet i markedsføring og branding.",
+    hero_cta: "Ta kontakt",
+    photo_alt: "Portrett av Eden Monday",
+
+    // Om meg
+    about_title: "Om meg",
+    about_p1:
+      "Jeg studerer informatikk ved Universitetet i Oslo, men det jeg virkelig brenner for er hvordan merkevarer bygges, og hvordan de når ut til folk. Koding har gitt meg god forståelse for hvordan nettsider, apper og plattformer fungerer bak kulissene. Nå vil jeg bruke det på markedsføring, innhold og branding.",
+    about_p2:
+      "Jeg er strukturert, lærer fort og liker å se ting gå fra idé til ferdig resultat. Denne nettsiden har jeg laget selv, fra design til kode. Nå ser jeg etter muligheter til å lære av folk som bygger merkevarer i praksis.",
+    about_focus: "Det jeg vil jobbe med",
+    focus: [
+      "Branding",
+      "Sosiale medier",
+      "Innholdsproduksjon",
+      "Digital markedsføring",
+      "Nettsider",
+    ],
+
     projects_title: "Prosjekter",
     view_project: "Se prosjekt",
     github: "GitHub",
@@ -22,100 +44,141 @@ export const translations = {
     // Prosjektbeskrivelser
     p_vs_title: "VærSikret",
     p_vs_tag: "Android-app for klimatilpasning",
-    p_vs_period: "feb. 2026 - mai 2026",
+    p_vs_period: "feb. 2026 – mai 2026",
     p_vs_desc:
-      "Gruppeprosjekt i IN2000 ved UiO. Android-app som henter observasjonshistorikken for en valgt eiendom fra Meteorologisk institutts Frost API, regner ut hvor uvanlig vinden og nedbøren er akkurat der, og foreslår konkrete klimatiltak. Kotlin, Jetpack Compose, MVVM.",
+      "Gruppeprosjekt i IN2000 ved UiO. Android-app som henter observasjonshistorikken for en valgt eiendom fra Meteorologisk institutts Frost API, regner ut hvor uvanlig vinden og nedbøren er akkurat der, og foreslår konkrete klimatiltak. Laget også en egen landingsside for appen. Kotlin, Jetpack Compose, MVVM.",
 
     p_pf_title: "edenmonday.no",
-    p_pf_tag: "Denne nettsiden",
-    p_pf_period: "juli 2026",
+    p_pf_tag: "Min personlige merkevare på nett",
+    p_pf_period: "juli 2026 – nå",
     p_pf_desc:
-      "Bygget fra bunnen med React og Vite, med en liten egen i18n-løsning for norsk og engelsk framfor et bibliotek. Samme repo huser også VærSikret-siden, som bygges fra en undermappe.",
+      "Designet og kodet fra bunnen av med React og Vite, på norsk og engelsk. Jeg har valgt farger, typografi og tone selv, slik at siden skal kjennes som meg.",
 
     // CV seksjon
     cv_title: "CV",
     cv_education: "Utdanning",
     cv_edu1_title: "Bachelor i informatikk: Programmering og systemarkitektur",
     cv_edu1_place: "Universitetet i Oslo",
-    cv_edu1_period: "2024 - 2027",
-    cv_edu2_title: "Vidergående skole, studiespesialisering",
-    cv_edu2_place: "Jessheim VGS",
-    cv_edu2_period: "2021 - 2024",
+    cv_edu1_period: "2024 – 2027",
+    cv_edu2_title: "Videregående skole, studiespesialisering",
+    cv_edu2_place: "Jessheim videregående skole",
+    cv_edu2_period: "2021 – 2024",
 
     cv_experience: "Erfaring",
-    cv_exp1_title: "Privat lærer", 
-    cv_exp1_place: "Realfagshjelpen AS", 
-    cv_exp1_period: "feb. 2025 - mai 2026",
+    cv_exp1_title: "Privatlærer",
+    cv_exp1_place: "Realfagshjelpen AS",
+    cv_exp1_period: "feb. 2025 – mai 2026",
 
     cv_volunteer: "Frivillig",
-    cv_volu1_title: "Arrangementsjef", 
-    cv_volu1_place: "Cybernetiske selskap, studentforening ved UiO", 
-    cv_volu1_period: "aug. 2025 - okt. 2025",
+    cv_volu1_title: "Arrangementsjef",
+    cv_volu1_place: "Cybernetisk Selskab, studentforening ved UiO",
+    cv_volu1_period: "aug. 2025 – okt. 2025",
 
     cv_skills: "Ferdigheter",
-    cv_contact: "Kontakt",
+
+    // Kontakt
+    contact_title: "Skal vi jobbe sammen?",
+    contact_text:
+      "Jeg er alltid klar for nye prosjekter og å lære mer. Send meg en e-post, så svarer jeg raskt.",
   },
   en: {
+    nav_about: "About",
+    nav_projects: "Projects",
     nav_cv: "CV",
+    nav_contact: "Contact",
     lang_no: "Norsk",
     lang_en: "English",
-    to_top: "To the top ↑",
+    to_top: "Back to top ↑",
     made_by: "Made by Eden",
     copy_email: "Copy email address",
 
-    hero_hello: "Hello!",
-    hero_intro_pre: "I am a ",
+    hero_eyebrow: "Computer science × marketing",
+    hero_hello: "Hi, I'm Eden.",
+    hero_intro_pre: "I'm a ",
     hero_intro_post:
-      " year old developer and computer science student at the University of Oslo.", 
+      " year old computer science student at the University of Oslo, with a heart for marketing and branding.",
+    hero_cta: "Get in touch",
+    photo_alt: "Portrait of Eden Monday",
+
+    about_title: "About me",
+    about_p1:
+      "I study computer science at the University of Oslo, but what I'm truly passionate about is how brands are built and how they reach people. Coding has given me a solid understanding of how websites, apps and platforms work behind the scenes. Now I want to put that to use in marketing, content and branding.",
+    about_p2:
+      "I'm organised, a quick learner, and I love seeing things go from idea to finished result. I designed and built this website myself, from layout to code. I'm now looking for opportunities to learn from people who build brands in practice.",
+    about_focus: "What I want to work with",
+    focus: [
+      "Branding",
+      "Social media",
+      "Content creation",
+      "Digital marketing",
+      "Websites",
+    ],
+
     projects_title: "Projects",
     view_project: "View project",
     github: "GitHub",
 
     p_vs_title: "VærSikret",
     p_vs_tag: "Android app for climate adaptation",
-    p_vs_period: "feb. 2026 - may 2026",
+    p_vs_period: "Feb 2026 – May 2026",
     p_vs_desc:
-      "Group project in IN2000 Software Engineering at UiO. Android app that pulls the observation history for a chosen property from the Norwegian Meteorological Institute's Frost API, works out how unusual the wind and rainfall are at that exact spot, and suggests concrete climate adaptation measures. Kotlin, Jetpack Compose, MVVM.",
+      "Group project in IN2000 Software Engineering at UiO. Android app that pulls the observation history for a chosen property from the Norwegian Meteorological Institute's Frost API, works out how unusual the wind and rainfall are at that exact spot, and suggests concrete climate adaptation measures. Also built a landing page for the app. Kotlin, Jetpack Compose, MVVM.",
 
     p_pf_title: "edenmonday.no",
-    p_pf_tag: "This website",
-    p_pf_period: "July 2026",
+    p_pf_tag: "My personal brand online",
+    p_pf_period: "July 2026 – present",
     p_pf_desc:
-      "Built from scratch with React and Vite, with a small home-made i18n setup for Norwegian and English instead of a library. The same repo also holds the VærSikret site, built from a subfolder.",
+      "Designed and built from scratch with React and Vite, in Norwegian and English. I chose the colours, typography and tone myself, so the site feels like me.",
 
     cv_title: "CV",
     cv_education: "Education",
-    cv_edu1_title: "BSc in Informatics: Programming and systemarchitecture", 
+    cv_edu1_title: "BSc in Informatics: Programming and System Architecture",
     cv_edu1_place: "University of Oslo",
-    cv_edu1_period: "2024 - 2027",
-    cv_edu2_title: "Upper secondary school",
-    cv_edu2_place: "Jessheim secondary school, university preparatory programme",
-    cv_edu2_period: "2021 - 2024", 
-    
-    cv_experience: "Experience",
-    cv_exp1_title: "Private tutor", 
-    cv_exp1_place: "Realfagshjelpen AS", 
-    cv_exp1_period: "feb. 2025 - may 2026",
+    cv_edu1_period: "2024 – 2027",
+    cv_edu2_title: "Upper secondary school, university preparatory programme",
+    cv_edu2_place: "Jessheim Upper Secondary School",
+    cv_edu2_period: "2021 – 2024",
 
-    cv_volunteer: "Volunteer",
-    cv_volu1_title: "Events manager", 
-    cv_volu1_place: "Cybernetic company, student association at UiO", 
-    cv_volu1_period: "aug. 2025 - oct. 2025",
+    cv_experience: "Experience",
+    cv_exp1_title: "Private tutor",
+    cv_exp1_place: "Realfagshjelpen AS",
+    cv_exp1_period: "Feb 2025 – May 2026",
+
+    cv_volunteer: "Volunteering",
+    cv_volu1_title: "Events manager",
+    cv_volu1_place: "Cybernetisk Selskab, student association at UiO",
+    cv_volu1_period: "Aug 2025 – Oct 2025",
 
     cv_skills: "Skills",
-    cv_contact: "Contact",
+
+    contact_title: "Let's work together?",
+    contact_text:
+      "I'm always up for new projects and learning more. Send me an email and I'll get back to you quickly.",
   },
 };
 
 const LangContext = createContext(null);
 
+const readLang = () => {
+  try {
+    const saved = localStorage.getItem("lang");
+    if (saved === "no" || saved === "en") return saved;
+  } catch {}
+  return "no";
+};
+
 export function LangProvider({ children }) {
-  const [lang, setLang] = useState(
-    () => localStorage.getItem("lang") || "no"
-  );
+  const [lang, setLang] = useState(readLang);
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   const choose = (l) => {
     setLang(l);
-    localStorage.setItem("lang", l);
+    try {
+      localStorage.setItem("lang", l);
+    } catch {}
   };
   const t = (key) => translations[lang][key] ?? key;
   return (

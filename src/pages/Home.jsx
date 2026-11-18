@@ -3,9 +3,21 @@ import { useLang } from "../i18n.jsx";
 import { LangSwitch, Footer } from "../components/Shared.jsx";
 
 const BIRTH_DATE = new Date("2005-04-10T14:44:00");
+const EMAIL = "eden.mo@icloud.com";
 
 const YEAR_MS = 365.2425 * 24 * 60 * 60 * 1000;
 const calcAge = () => ((Date.now() - BIRTH_DATE.getTime()) / YEAR_MS).toFixed(9);
+
+const SKILLS = [
+  "Kotlin",
+  "Jetpack Compose",
+  "Java",
+  "Python",
+  "React",
+  "HTML & CSS",
+  "REST APIs",
+  "Git & GitHub",
+];
 
 function LiveAge() {
   const [age, setAge] = useState(calcAge);
@@ -47,6 +59,18 @@ function HeroOrbs() {
   );
 }
 
+function CvItem({ title, place, period }) {
+  return (
+    <div className="cv-item">
+      <div>
+        <strong>{title}</strong>
+        <span>{place}</span>
+      </div>
+      <span className="period">{period}</span>
+    </div>
+  );
+}
+
 export default function Home() {
   const { t } = useLang();
 
@@ -57,31 +81,65 @@ export default function Home() {
           <a href="/" className="logo">
             eden monday
           </a>
+          <nav className="topnav">
+            <a href="#about">{t("nav_about")}</a>
+            <a href="#projects">{t("nav_projects")}</a>
+            <a href="#cv">{t("nav_cv")}</a>
+            <a href="#contact">{t("nav_contact")}</a>
+          </nav>
           <LangSwitch />
         </header>
 
         <div className="hero">
           <HeroOrbs />
-          <h1>{t("hero_hello")}</h1>
-          <p>
-            {t("hero_intro_pre")}
-            <LiveAge />
-            {t("hero_intro_post")}
-          </p>
-          <div className="cta-row">
-            <a href="#cv" className="btn primary">
-              {t("nav_cv")}
-            </a>
-            <a
-              href="https://github.com/edenmonday"
-              className="btn"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
+          <div className="hero-text">
+            <p className="eyebrow">{t("hero_eyebrow")}</p>
+            <h1>{t("hero_hello")}</h1>
+            <p className="hero-intro">
+              {t("hero_intro_pre")}
+              <LiveAge />
+              {t("hero_intro_post")}
+            </p>
+            <div className="cta-row">
+              <a href={`mailto:${EMAIL}`} className="btn primary">
+                {t("hero_cta")}
+              </a>
+              <a href="#about" className="btn">
+                {t("nav_about")}
+              </a>
+              <a href="#cv" className="btn">
+                {t("nav_cv")}
+              </a>
+            </div>
           </div>
+          <figure className="hero-photo">
+            <img
+              src="/eden.jpg"
+              alt={t("photo_alt")}
+              width="825"
+              height="1100"
+              fetchpriority="high"
+            />
+          </figure>
         </div>
+
+        <section id="about">
+          <h2 className="section-title">{t("about_title")}</h2>
+          <div className="about">
+            <div className="about-text">
+              <p>{t("about_p1")}</p>
+              <p>{t("about_p2")}</p>
+            </div>
+            <div className="about-focus">
+              <h3>{t("about_focus")}</h3>
+              <ul className="chips accent">
+                {t("focus").map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
 
         <section id="projects">
           <h2 className="section-title">{t("projects_title")}</h2>
@@ -120,86 +178,59 @@ export default function Home() {
               </a>
             </span>
           </div>
-
         </section>
 
         <section id="cv">
           <h2 className="section-title">{t("cv_title")}</h2>
 
           <div className="cv-block">
-            <h3>{t("cv_education")}</h3>
-            
-            <div className="cv-item">
-              <div>
-                <strong>{t("cv_edu1_title")}</strong>
-                <span>{t("cv_edu1_place")}</span>
-              </div>
-              <span className="period">{t("cv_edu1_period")}</span>
-            </div>
-
-            <div className="cv-item"> 
-              <div>
-                <strong>{t("cv_edu2_title")}</strong>
-                <span>{t("cv_edu2_place")}</span>
-              </div>
-              <span className="period">{t("cv_edu2_period")}</span>
-            </div>
-          </div>
-
-          <div className="cv-block">
             <h3>{t("cv_experience")}</h3>
-            <div className="cv-item">
-              <div>
-                <strong>{t("cv_exp1_title")}</strong>
-                <span>{t("cv_exp1_place")}</span>
-
-              </div>
-              <span className="period">{t("cv_exp1_period")}</span>
-            </div>
+            <CvItem
+              title={t("cv_exp1_title")}
+              place={t("cv_exp1_place")}
+              period={t("cv_exp1_period")}
+            />
           </div>
 
           <div className="cv-block">
             <h3>{t("cv_volunteer")}</h3>
-            <div className="cv-item">
-              <div>
-                <strong>{t("cv_volu1_title")}</strong>
-                <span>{t("cv_volu1_place")}</span>
-              </div>
-              <span className="period">{t("cv_volu1_period")}</span>
-            </div>
+            <CvItem
+              title={t("cv_volu1_title")}
+              place={t("cv_volu1_place")}
+              period={t("cv_volu1_period")}
+            />
           </div>
 
-
+          <div className="cv-block">
+            <h3>{t("cv_education")}</h3>
+            <CvItem
+              title={t("cv_edu1_title")}
+              place={t("cv_edu1_place")}
+              period={t("cv_edu1_period")}
+            />
+            <CvItem
+              title={t("cv_edu2_title")}
+              place={t("cv_edu2_place")}
+              period={t("cv_edu2_period")}
+            />
+          </div>
 
           <div className="cv-block">
             <h3>{t("cv_skills")}</h3>
-            <ul className="skills">
-              {[
-                "Kotlin",
-                "Jetpack Compose",
-                "Java",
-                "Python",
-                "React",
-                "Git",
-                "REST APIs",
-                "HTML, CSS",
-                "Git & GitHub",
-              ].map((s) => (
+            <ul className="chips">
+              {SKILLS.map((s) => (
                 <li key={s}>{s}</li>
               ))}
             </ul>
           </div>
+        </section>
 
-          <div className="cv-block">
-            <h3>{t("cv_contact")}</h3>
-            <div className="cv-item">
-              <div>
-                <a href="mailto:eden.mo@icloud.com" className="pill-link">
-                  eden.mo@icloud.com
-                </a>
-              </div>
-            </div>
-          </div>
+        <section id="contact" className="contact">
+          <h2>{t("contact_title")}</h2>
+          <p>{t("contact_text")}</p>
+          <a href={`mailto:${EMAIL}`} className="btn primary big">
+            {EMAIL}
+          </a>
         </section>
       </div>
 

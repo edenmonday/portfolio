@@ -31,7 +31,7 @@ a {
 }
 
 .container {
-  max-width: 880px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -40,7 +40,26 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   padding: 28px 0;
+}
+
+.topnav {
+  display: flex;
+  gap: 26px;
+  margin-left: auto;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.topnav a {
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+.topnav a:hover {
+  color: var(--accent);
 }
 
 .logo {
@@ -75,11 +94,58 @@ a {
 
 .hero {
   position: relative;
-  padding: 110px 0 80px;
-  display: flex;
-  flex-direction: column;
+  padding: 70px 0 90px;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 56px;
   align-items: center;
-  text-align: center;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(210, 31, 60, 0.08);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+}
+
+.hero-photo {
+  position: relative;
+  z-index: 1;
+  justify-self: end;
+  width: 100%;
+  max-width: 380px;
+}
+
+.hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translate(16px, 16px);
+  border-radius: 28px;
+  background: var(--accent);
+  z-index: -1;
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 30%;
+  border-radius: 28px;
+  background: var(--line);
 }
 
 .hero-orbs {
@@ -140,17 +206,11 @@ a {
   50% { transform: translate(18px, -22px) scale(1.12); }
 }
 
-.hero h1,
-.hero p,
-.hero .cta-row {
-  position: relative;
-  z-index: 1;
-}
-
 .hero h1 {
   font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(3rem, 9vw, 5.5rem);
+  font-size: clamp(2.6rem, 6.5vw, 4.6rem);
   font-weight: 700;
+  line-height: 1.05;
   letter-spacing: -0.03em;
   color: var(--accent);
 }
@@ -161,19 +221,18 @@ a {
   color: var(--accent);
 }
 
-.hero p {
-  margin-top: 18px;
-  font-size: 1.25rem;
-  max-width: 34em;
+.hero-intro {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  max-width: 30em;
   color: var(--ink);
 }
 
 .hero .cta-row {
-  margin-top: 28px;
+  margin-top: 30px;
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .btn {
@@ -272,14 +331,6 @@ section {
   margin-bottom: 34px;
 }
 
-.cv-block h3 {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-
 .cv-item {
   display: flex;
   justify-content: space-between;
@@ -302,19 +353,82 @@ section {
   font-size: 0.9rem;
 }
 
-.skills {
+.chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.skills li {
+.chips li {
   list-style: none;
   border: 1px solid var(--line);
   background: var(--card);
   border-radius: 999px;
   padding: 5px 14px;
   font-size: 0.88rem;
+}
+
+.chips.accent li {
+  border-color: rgba(210, 31, 60, 0.25);
+  background: rgba(210, 31, 60, 0.06);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-text p {
+  font-size: 1.08rem;
+  max-width: 36em;
+}
+
+.about-text p + p {
+  margin-top: 16px;
+}
+
+.about-focus {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.about-focus h3,
+.cv-block h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.contact {
+  text-align: center;
+  padding: 80px 0 90px;
+}
+
+.contact h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.contact p {
+  margin: 14px auto 28px;
+  max-width: 30em;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.btn.big {
+  padding: 14px 28px;
+  font-size: 1.05rem;
 }
 
 footer {
@@ -418,6 +532,50 @@ footer {
 
 
 @media (max-width: 760px) {
+  .topnav {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 30px 0 70px;
+    text-align: center;
+  }
+
+  .hero-photo {
+    order: -1;
+    justify-self: center;
+    max-width: 260px;
+  }
+
+  .hero-photo::before {
+    transform: translate(10px, 10px);
+  }
+
+  .hero-intro {
+    font-size: 1.1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero .cta-row {
+    justify-content: center;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .project {
+    grid-template-columns: 1fr;
+  }
+
+  .project-period {
+    align-self: start;
+  }
+
   .cv-item {
     flex-direction: column;
     gap: 2px;
