@@ -15,7 +15,7 @@ export const translations = {
 
     // Forside
     hero_eyebrow: "Informatikk × markedsføring",
-    hero_hello: "Hei, jeg er Eden.",
+    hero_hello: "Hei, jeg er ",
     hero_intro_pre: "Jeg er en ",
     hero_intro_post:
       " år gammel informatikkstudent ved Universitetet i Oslo, med hjertet i markedsføring og branding.",
@@ -56,23 +56,26 @@ export const translations = {
 
     // CV seksjon
     cv_title: "CV",
+    cv_all: "Alt",
     cv_education: "Utdanning",
-    cv_edu1_title: "Bachelor i informatikk: Programmering og systemarkitektur",
-    cv_edu1_place: "Universitetet i Oslo",
-    cv_edu1_period: "2024 – 2027",
-    cv_edu2_title: "Videregående skole, studiespesialisering",
-    cv_edu2_place: "Jessheim videregående skole",
-    cv_edu2_period: "2021 – 2024",
-
-    cv_experience: "Erfaring",
-    cv_exp1_title: "Privatlærer",
-    cv_exp1_place: "Realfagshjelpen AS",
-    cv_exp1_period: "feb. 2025 – mai 2026",
-
+    cv_experience: "Jobb",
     cv_volunteer: "Frivillig",
+    cv_now: "Nå",
+    cv_ongoing: "Pågår",
+    cv_years: (n) => `${n} år`,
+    cv_months: (n) => `${n} mnd`,
+    months: ["jan.", "feb.", "mars", "apr.", "mai", "juni", "juli", "aug.", "sep.", "okt.", "nov.", "des."],
+
+    cv_cafe_title: "Kafémedarbeider",
+    cv_cafe_place: "Åpent Bakeri, Torshov",
+    cv_tutor_title: "Privatlærer",
+    cv_tutor_place: "Realfagshjelpen AS",
     cv_volu1_title: "Arrangementsjef",
     cv_volu1_place: "Cybernetisk Selskab, studentforening ved UiO",
-    cv_volu1_period: "aug. 2025 – okt. 2025",
+    cv_edu1_title: "Bachelor i informatikk: Programmering og systemarkitektur",
+    cv_edu1_place: "Universitetet i Oslo",
+    cv_edu2_title: "Videregående skole, studiespesialisering",
+    cv_edu2_place: "Jessheim videregående skole",
 
     cv_skills: "Ferdigheter",
 
@@ -93,7 +96,7 @@ export const translations = {
     copy_email: "Copy email address",
 
     hero_eyebrow: "Computer science × marketing",
-    hero_hello: "Hi, I'm Eden.",
+    hero_hello: "Hi, I'm ",
     hero_intro_pre: "I'm a ",
     hero_intro_post:
       " year old computer science student at the University of Oslo, with a heart for marketing and branding.",
@@ -131,23 +134,26 @@ export const translations = {
       "Designed and built from scratch with React and Vite, in Norwegian and English. I chose the colours, typography and tone myself, so the site feels like me.",
 
     cv_title: "CV",
+    cv_all: "All",
     cv_education: "Education",
-    cv_edu1_title: "BSc in Informatics: Programming and System Architecture",
-    cv_edu1_place: "University of Oslo",
-    cv_edu1_period: "2024 – 2027",
-    cv_edu2_title: "Upper secondary school, university preparatory programme",
-    cv_edu2_place: "Jessheim Upper Secondary School",
-    cv_edu2_period: "2021 – 2024",
-
-    cv_experience: "Experience",
-    cv_exp1_title: "Private tutor",
-    cv_exp1_place: "Realfagshjelpen AS",
-    cv_exp1_period: "Feb 2025 – May 2026",
-
+    cv_experience: "Work",
     cv_volunteer: "Volunteering",
+    cv_now: "Now",
+    cv_ongoing: "Ongoing",
+    cv_years: (n) => `${n} yr${n === 1 ? "" : "s"}`,
+    cv_months: (n) => `${n} mo`,
+    months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+
+    cv_cafe_title: "Café worker",
+    cv_cafe_place: "Åpent Bakeri, Torshov",
+    cv_tutor_title: "Private tutor",
+    cv_tutor_place: "Realfagshjelpen AS",
     cv_volu1_title: "Events manager",
     cv_volu1_place: "Cybernetisk Selskab, student association at UiO",
-    cv_volu1_period: "Aug 2025 – Oct 2025",
+    cv_edu1_title: "BSc in Informatics: Programming and System Architecture",
+    cv_edu1_place: "University of Oslo",
+    cv_edu2_title: "Upper secondary school, university preparatory programme",
+    cv_edu2_place: "Jessheim Upper Secondary School",
 
     cv_skills: "Skills",
 

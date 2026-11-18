@@ -59,15 +59,115 @@ function HeroOrbs() {
   );
 }
 
-function CvItem({ title, place, period }) {
+// start/end: [år, måned 1-12]. end: null = pågår. years: vis bare årstall.
+const CV = [
+  { id: "cafe", type: "exp", start: [2026, 10], end: null },
+  { id: "volu1", type: "vol", start: [2025, 8], end: [2025, 10] },
+  { id: "tutor", type: "exp", start: [2025, 2], end: null },
+  { id: "edu1", type: "edu", start: [2024, 8], end: [2027, 6], years: true, ongoing: true },
+  { id: "edu2", type: "edu", start: [2021, 8], end: [2024, 6], years: true },
+];
+
+const TYPE_LABEL = { exp: "cv_experience", vol: "cv_volunteer", edu: "cv_education" };
+const FILTERS = ["all", "exp", "edu", "vol"];
+
+function formatPeriod(item, t) {
+  const m = t("months");
+  const fmt = ([y, mo]) => (item.years ? `${y}` : `${m[mo - 1]} ${y}`);
+  return `${fmt(item.start)} – ${item.end ? fmt(item.end) : t("cv_now").toLowerCase()}`;
+}
+
+function formatDuration(item, t) {
+  if (item.years) return null;
+  const now = new Date();
+  const [ey, em] = item.end ?? [now.getFullYear(), now.getMonth() + 1];
+  const total = (ey - item.start[0]) * 12 + (em - item.start[1]) + 1;
+  const y = Math.floor(total / 12);
+  const mo = total % 12;
+  return [y && t("cv_years")(y), mo && t("cv_months")(mo)].filter(Boolean).join(" ");
+}
+
+function useReveal() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !("IntersectionObserver" in window)) {
+      el?.classList.add("in");
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("in");
+            io.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.15 }
+    );
+    el.querySelectorAll(".tl-item").forEach((n) => io.observe(n));
+    return () => io.disconnect();
+  });
+  return ref;
+}
+
+function CvTimeline() {
+  const { t } = useLang();
+  const [filter, setFilter] = useState("all");
+  const ref = useReveal();
+  const items = CV.filter((i) => filter === "all" || i.type === filter);
+
   return (
-    <div className="cv-item">
-      <div>
-        <strong>{title}</strong>
-        <span>{place}</span>
+    <>
+      <div className="cv-filters" role="tablist">
+        {FILTERS.map((f) => (
+          <button
+            key={f}
+            role="tab"
+            aria-selected={filter === f}
+            className={filter === f ? "active" : ""}
+            onClick={() => setFilter(f)}
+          >
+            {t(f === "all" ? "cv_all" : TYPE_LABEL[f])}
+            <span className="count">
+              {f === "all" ? CV.length : CV.filter((i) => i.type === f).length}
+            </span>
+          </button>
+        ))}
       </div>
-      <span className="period">{period}</span>
-    </div>
+
+      <ol className="timeline" ref={ref}>
+        {items.map((item, i) => {
+          const current = !item.end || item.ongoing;
+          const duration = formatDuration(item, t);
+          return (
+            <li
+              key={item.id}
+              className={`tl-item type-${item.type}${current ? " current" : ""}`}
+              style={{ "--delay": `${i * 70}ms` }}
+            >
+              <span className="tl-dot" aria-hidden="true" />
+              <div className="tl-card">
+                <div className="tl-top">
+                  <span className="tl-type">{t(TYPE_LABEL[item.type])}</span>
+                  {current && (
+                    <span className="tl-now">
+                      {t(item.ongoing ? "cv_ongoing" : "cv_now")}
+                    </span>
+                  )}
+                </div>
+                <strong className="tl-title">{t(`cv_${item.id}_title`)}</strong>
+                <span className="tl-place">{t(`cv_${item.id}_place`)}</span>
+                <span className="tl-period">
+                  {formatPeriod(item, t)}
+                  {duration && <span className="tl-duration"> · {duration}</span>}
+                </span>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </>
   );
 }
 
@@ -94,7 +194,15 @@ export default function Home() {
           <HeroOrbs />
           <div className="hero-text">
             <p className="eyebrow">{t("hero_eyebrow")}</p>
-            <h1>{t("hero_hello")}</h1>
+            <h1>
+              {t("hero_hello")}
+              <span className="nowrap">
+                <span className="hero-name">Eden</span>!{" "}
+                <span className="heart" aria-hidden="true">
+                  ♥
+                </span>
+              </span>
+            </h1>
             <p className="hero-intro">
               {t("hero_intro_pre")}
               <LiveAge />
@@ -183,39 +291,9 @@ export default function Home() {
         <section id="cv">
           <h2 className="section-title">{t("cv_title")}</h2>
 
-          <div className="cv-block">
-            <h3>{t("cv_experience")}</h3>
-            <CvItem
-              title={t("cv_exp1_title")}
-              place={t("cv_exp1_place")}
-              period={t("cv_exp1_period")}
-            />
-          </div>
+          <CvTimeline />
 
-          <div className="cv-block">
-            <h3>{t("cv_volunteer")}</h3>
-            <CvItem
-              title={t("cv_volu1_title")}
-              place={t("cv_volu1_place")}
-              period={t("cv_volu1_period")}
-            />
-          </div>
-
-          <div className="cv-block">
-            <h3>{t("cv_education")}</h3>
-            <CvItem
-              title={t("cv_edu1_title")}
-              place={t("cv_edu1_place")}
-              period={t("cv_edu1_period")}
-            />
-            <CvItem
-              title={t("cv_edu2_title")}
-              place={t("cv_edu2_place")}
-              period={t("cv_edu2_period")}
-            />
-          </div>
-
-          <div className="cv-block">
+          <div className="cv-block skills-block">
             <h3>{t("cv_skills")}</h3>
             <ul className="chips">
               {SKILLS.map((s) => (
