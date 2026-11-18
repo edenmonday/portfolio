@@ -50,7 +50,7 @@ function HeroOrbs() {
     const onScroll = () => {
       if (raf) return;
       raf = requestAnimationFrame(() => {
-        const y = window.scrollY;
+        const y = Math.min(window.scrollY, 500); // usynlig etter 500px, så stopp der
         if (ref.current) {
           const fade = Math.max(1 - y / 500, 0);
           ref.current.style.transform = `translate3d(0, ${y * 0.3}px, 0) rotate(${y * 0.04}deg)`;
@@ -147,7 +147,7 @@ export default function Home() {
             <h1>
               {t("hero_hello")}
               <span className="nowrap">
-                <em className="hero-name">Eden</em>!{" "}
+                <span className="hero-name">Eden</span>!{" "}
                 <span className="heart" aria-hidden="true">
                   ♥
                 </span>
@@ -185,7 +185,7 @@ export default function Home() {
           <SectionHead num="01" title={t("about_title")} />
           <div className="about">
             <div className="about-text">
-              <p className="lead">{t("about_p1")}</p>
+              <p>{t("about_p1")}</p>
               <p>{t("about_p2")}</p>
             </div>
             <aside className="about-focus">
