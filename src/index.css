@@ -282,6 +282,12 @@ a {
   color: var(--ink);
 }
 
+.hero-intro.second {
+  margin-top: 12px;
+  font-size: 1.02rem;
+  color: var(--ink);
+}
+
 .age {
   font-variant-numeric: tabular-nums;
   font-weight: 600;
@@ -649,12 +655,113 @@ section {
 /* ---------- Prosjekter ---------- */
 
 .project {
-  padding: 28px 0;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 44px;
+  align-items: center;
+  padding: 34px 0;
   border-bottom: 1px solid var(--line);
 }
 
 .project:first-of-type {
   border-top: 1px solid var(--line);
+}
+
+.project-visual {
+  border-radius: 20px;
+  background: var(--accent-soft);
+  min-height: 300px;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project:hover .project-visual {
+  transform: translateY(-4px);
+}
+
+.pv-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 26px;
+}
+
+.pv-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pv-swatches {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.pv-swatches span {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 96px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.pv-swatches small {
+  font-size: 0.68rem;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+
+.pv-type {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.pv-type div {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--card);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.pv-aa {
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--accent);
+  font-family: var(--sans);
+  font-weight: 500;
+}
+
+.pv-aa.serif {
+  font-family: var(--serif);
+}
+
+.pv-phone {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 28px 0 0;
+  height: 340px;
+}
+
+.pv-phone img {
+  display: block;
+  width: 180px;
+  height: auto;
+  filter: drop-shadow(0 14px 24px rgba(42, 31, 34, 0.18));
 }
 
 .project-head {
@@ -982,8 +1089,41 @@ footer {
 /* ---------- Mobil ---------- */
 
 @media (max-width: 860px) {
+  .topbar {
+    flex-wrap: wrap;
+    row-gap: 14px;
+  }
+
   .topnav {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .topnav::-webkit-scrollbar {
     display: none;
+  }
+
+  .topnav a {
+    flex: none;
+    padding: 6px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+
+  .topnav a::after {
+    display: none;
+  }
+
+  .project {
+    grid-template-columns: 1fr;
+    gap: 22px;
   }
 }
 
@@ -1021,6 +1161,22 @@ footer {
     font-size: 1.08rem;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .hero-intro.second {
+    font-size: 1rem;
+  }
+
+  .project-visual {
+    min-height: 0;
+  }
+
+  .pv-phone {
+    height: 280px;
+  }
+
+  .pv-phone img {
+    width: 150px;
   }
 
   .hero .cta-row {
@@ -1111,6 +1267,10 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .project-visual {
+    transition: none;
   }
 
   .heart,

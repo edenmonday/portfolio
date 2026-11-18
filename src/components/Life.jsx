@@ -66,7 +66,7 @@ export default function Life() {
 
   return (
     <section id="life">
-      <SectionHead num="02" title={t("life_title")} />
+      <SectionHead num="03" title={t("life_title")} />
       <p className="lead">{t("life_intro")}</p>
 
       <div className="filters" role="tablist">

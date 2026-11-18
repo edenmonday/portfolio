@@ -46,6 +46,8 @@ function HeroOrbs() {
   const ref = useRef(null);
 
   useEffect(() => {
+    // Ingen scrollbevegelse for dem som har slått av animasjoner
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
     let raf = null;
     const onScroll = () => {
       if (raf) return;
@@ -132,8 +134,8 @@ export default function Home() {
           </a>
           <nav className="topnav">
             <a href="#about">{t("nav_about")}</a>
-            <a href="#life">{t("nav_life")}</a>
             <a href="#projects">{t("nav_projects")}</a>
+            <a href="#life">{t("nav_life")}</a>
             <a href="#cv">{t("nav_cv")}</a>
             <a href="#contact">{t("nav_contact")}</a>
           </nav>
@@ -158,6 +160,7 @@ export default function Home() {
               <LiveAge />
               {t("hero_intro_post")}
             </p>
+            <p className="hero-intro second">{t("hero_intro_2")}</p>
             <div className="cta-row">
               <a href={`mailto:${EMAIL}`} className="btn primary">
                 {t("hero_cta")}
@@ -202,48 +205,89 @@ export default function Home() {
           </div>
         </section>
 
-        <Life />
-
         <section id="projects">
-          <SectionHead num="03" title={t("projects_title")} />
+          <SectionHead num="02" title={t("projects_title")} />
 
           <article className="project">
-            <div className="project-head">
-              <h3 className="project-name">{t("p_pf_title")}</h3>
-              <span className="project-period">{t("p_pf_period")}</span>
+            <div className="project-visual pv-brand" aria-hidden="true">
+              <div className="pv-label">{t("pv_colors")}</div>
+              <div className="pv-swatches">
+                <span style={{ background: "#8c3442", color: "#fff" }}>
+                  {t("pv_wine")}
+                  <small>#8C3442</small>
+                </span>
+                <span style={{ background: "#d6b98c" }}>
+                  {t("pv_champagne")}
+                  <small>#D6B98C</small>
+                </span>
+                <span style={{ background: "#f7f1ea" }}>
+                  {t("pv_cream")}
+                  <small>#F7F1EA</small>
+                </span>
+              </div>
+              <div className="pv-label">{t("pv_type")}</div>
+              <div className="pv-type">
+                <div>
+                  <span className="pv-aa serif">Aa</span>
+                  Lora
+                </div>
+                <div>
+                  <span className="pv-aa">Aa</span>
+                  DM Sans
+                </div>
+              </div>
             </div>
-            <p className="project-tag">{t("p_pf_tag")}</p>
-            <p className="project-desc">{t("p_pf_desc")}</p>
-            <span className="project-links">
-              <a
-                href="https://github.com/edenmonday/portfolio"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t("github")} ↗
-              </a>
-            </span>
+            <div className="project-body">
+              <div className="project-head">
+                <h3 className="project-name">{t("p_pf_title")}</h3>
+                <span className="project-period">{t("p_pf_period")}</span>
+              </div>
+              <p className="project-tag">{t("p_pf_tag")}</p>
+              <p className="project-desc">{t("p_pf_desc")}</p>
+              <span className="project-links">
+                <a
+                  href="https://github.com/edenmonday/portfolio"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {t("github")} ↗
+                </a>
+              </span>
+            </div>
           </article>
 
           <article className="project">
-            <div className="project-head">
-              <h3 className="project-name">{t("p_vs_title")}</h3>
-              <span className="project-period">{t("p_vs_period")}</span>
+            <div className="project-visual pv-phone">
+              <img
+                src="/projects/vaersikret.png"
+                alt={t("pv_vs_alt")}
+                width="520"
+                height="1096"
+                loading="lazy"
+              />
             </div>
-            <p className="project-tag">{t("p_vs_tag")}</p>
-            <p className="project-desc">{t("p_vs_desc")}</p>
-            <span className="project-links">
-              <a href="https://vaersikret.edenmonday.no">{t("view_project")} →</a>
-              <a
-                href="https://github.com/edenmonday/team-31"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t("github")} ↗
-              </a>
-            </span>
+            <div className="project-body">
+              <div className="project-head">
+                <h3 className="project-name">{t("p_vs_title")}</h3>
+                <span className="project-period">{t("p_vs_period")}</span>
+              </div>
+              <p className="project-tag">{t("p_vs_tag")}</p>
+              <p className="project-desc">{t("p_vs_desc")}</p>
+              <span className="project-links">
+                <a href="https://vaersikret.edenmonday.no">{t("view_project")} →</a>
+                <a
+                  href="https://github.com/edenmonday/team-31"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {t("github")} ↗
+                </a>
+              </span>
+            </div>
           </article>
         </section>
+
+        <Life />
 
         <section id="cv">
           <SectionHead num="04" title={t("cv_title")} />

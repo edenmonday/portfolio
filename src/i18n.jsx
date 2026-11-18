@@ -18,7 +18,9 @@ export const translations = {
     hero_hello: "Hei, jeg er ",
     hero_intro_pre: "Jeg er en ",
     hero_intro_post:
-      " år gammel informatikkstudent ved Universitetet i Oslo, med hjertet i markedsføring og branding.",
+      " år gammel informatikkstudent ved Universitetet i Oslo, og nysgjerrig på det som skjer når teknologi, design og markedsføring møtes.",
+    hero_intro_2:
+      "Jeg liker å lage digitale ting som både ser bra ut og fungerer godt, og vil lære hvordan det kan bygge merkevarer folk husker.",
     hero_cta: "Ta kontakt",
     photo_alt: "Portrett av Eden Monday",
 
@@ -51,6 +53,12 @@ export const translations = {
     life_next: "Neste bilde",
 
     projects_title: "Prosjekter",
+    pv_colors: "Farger",
+    pv_type: "Skrift",
+    pv_wine: "Vinrødt",
+    pv_champagne: "Champagne",
+    pv_cream: "Krem",
+    pv_vs_alt: "Velkomstskjermen i VærSikret-appen",
     view_project: "Se prosjekt",
     github: "GitHub",
 
@@ -114,7 +122,9 @@ export const translations = {
     hero_hello: "Hi, I'm ",
     hero_intro_pre: "I'm a ",
     hero_intro_post:
-      " year old computer science student at the University of Oslo, with a heart for marketing and branding.",
+      " year old computer science student at the University of Oslo, curious about what happens when technology, design and marketing meet.",
+    hero_intro_2:
+      "I like making digital things that look good and work well, and I want to learn how that can build brands people remember.",
     hero_cta: "Get in touch",
     photo_alt: "Portrait of Eden Monday",
 
@@ -145,6 +155,12 @@ export const translations = {
     life_next: "Next photo",
 
     projects_title: "Projects",
+    pv_colors: "Colours",
+    pv_type: "Type",
+    pv_wine: "Wine",
+    pv_champagne: "Champagne",
+    pv_cream: "Cream",
+    pv_vs_alt: "The welcome screen in the VærSikret app",
     view_project: "View project",
     github: "GitHub",
 
